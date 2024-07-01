@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("../fonts/1FTV-Gasing.ttf") format("truetype");
+  /* Các định dạng font khác như woff, woff2 cũng có thể được sử dụng */
+}
+
+.my-custom-font {
+  font-family: "MyCustomFont", sans-serif;
+}
