@@ -9,11 +9,17 @@ import { LoginPayload, authActions, selectIsLoggedIn } from "./authSlice";
 function* handleLogin(payload: LoginPayload) {
   try {
     yield delay(1000); // yield call(api, '')
-    localStorage.setItem("access_token", "fake_token");
-    // yield put(
-    //   authActions.loginSuccess({
 
-    //   })
+    localStorage.setItem("access_token", "fake_token");
+    yield put(
+      authActions.loginSuccess({
+        avatar: "",
+        email: "",
+        role: "USER",
+        token: "fake",
+        username: payload.username,
+      })
+    );
     // );
 
     // Redirect to Admin page

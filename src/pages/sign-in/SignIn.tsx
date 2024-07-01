@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import { Formik } from "formik";
+import { useAppDispatch, useAppSelector } from "@/useRedux/stores/hook";
+import { authActions, selectLoading } from "@/useRedux/features/auth/authSlice";
 const SignIn = () => {
+  const dispatch = useAppDispatch();
+  let loading = useAppSelector(selectLoading);
   return (
     <div className="flex flex-row w-full h-screen">
       <div className="hidden lg:flex items-center justify-center bg-pink-400 w-1/2 rounded-r-3xl">
@@ -35,7 +39,7 @@ const SignIn = () => {
             }}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
+                dispatch(authActions.login(values));
                 setSubmitting(false);
               }, 400);
             }}
@@ -71,13 +75,17 @@ const SignIn = () => {
                     className="p-2 border-b-2 border-gray-400"
                   />
                   {errors.password && touched.password && errors.password}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="bg-pink-400 text-white p-2 rounded-lg"
-                  >
-                    Đăng nhập
-                  </button>
+                  {loading ? (
+                    <p>Đang xử lý...</p>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-pink-400 text-white p-2 rounded-lg"
+                    >
+                      Đăng nhập
+                    </button>
+                  )}
                 </div>
               </form>
             )}

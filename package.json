@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
+    "@tanstack/react-query": "^5.49.2",
+    "antd": "^5.18.3",
     "axios": "^1.7.2",
     "connected-react-router": "^6.9.3",
     "formik": "^2.4.6",

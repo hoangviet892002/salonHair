@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import { Layout } from "@/layouts";
-import { ErrorPage, Home, SignIn, SignUp } from "@/pages";
+import { ErrorPage, Home, SignIn, SignUp, SalonDetail } from "@/pages";
 import PrivateRouterNotLogin from "./privateRouterNotLogin"; // Corrected import
 
 const Routers = () => {
@@ -20,6 +20,10 @@ const Routers = () => {
     {
       path: "*",
       element: <Layout Page={ErrorPage} />,
+    },
+    {
+      path: "/salon/:id",
+      element: <Layout Page={SalonDetail} />,
     },
   ]);
   return <div>{elements}</div>;
