@@ -6,6 +6,7 @@ import { SignUpPayload } from "@/types/user.type";
 import { authActions, selectLoading } from "@/useRedux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/useRedux/stores/hook";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
@@ -35,11 +36,14 @@ const SignUp = () => {
           Tận hưởng không gian thư giãn tại Spa
         </label>
         <div className="p-10 text-left">
-          <h1 className="text-[#FF9FAB] text-4xl mb-4">Đăng kí</h1>
+          <h1 className="text-[#FF9FAB] text-4xl mb-4">Đăng ký</h1>
           <div className="text-gray-500 mb-6">
-            <a className="text-[#FF9FAB] hover:underline cursor-pointer">
+            <Link
+              to="/sign-in"
+              className="text-[#FF9FAB] hover:underline cursor-pointer"
+            >
               Đã có tài khoản?
-            </a>
+            </Link>
             <span> Đăng nhập</span>
           </div>
           <Formik
@@ -178,7 +182,7 @@ const SignUp = () => {
                       disabled={isSubmitting}
                       className="w-full py-3 mt-4 rounded-lg text-white bg-[#987070] hover:bg-opacity-90"
                     >
-                      Đăng kí
+                      Đăng ký
                     </button>
                   )}
                 </div>

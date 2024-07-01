@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/variants";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -21,9 +22,12 @@ const SignIn = () => {
         <div className="p-10 text-left">
           <h1 className="text-[#FF9FAB] text-4xl mb-4">Đăng nhập</h1>
           <div className="text-gray-500 mb-6">
-            <a className="text-[#FF9FAB] hover:underline cursor-pointer">
+            <Link
+              to="/sign-up"
+              className="text-[#FF9FAB] hover:underline cursor-pointer"
+            >
               Chưa có tài khoản?
-            </a>
+            </Link>
             <span> Đăng ký ngay</span>
           </div>
           <Formik
