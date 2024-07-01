@@ -1,48 +1,52 @@
-import { SignUpPayload } from "@/types/user.type";
+import { SignUpPayload, User } from "@/types/user.type";
 import { useAppSelector } from "@/useRedux/stores/hook";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { push } from "connected-react-router";
 import { toast } from "react-toastify";
 import { call, delay, fork, put, select, take } from "redux-saga/effects";
 import { LoginPayload, authActions, selectIsLoggedIn } from "./authSlice";
+import { signIn, signUp } from "@/apis/auth.api";
+import { ResponseType } from "@/types/response.type";
 
 function* handleLogin(payload: LoginPayload) {
   try {
-    yield delay(1000); // yield call(api, '')
-
-    localStorage.setItem("access_token", "fake_token");
-    yield put(
-      authActions.loginSuccess({
-        avatar: "",
-        email: "",
-        role: "USER",
-        token: "fake",
-        username: payload.username,
-      })
+    const response: ResponseType<User> = yield signIn(
+      payload.username,
+      payload.password
     );
+
+    if (response.status !== 200) {
+      toast.error(response.message);
+      yield put(authActions.loginFailed("Login fail"));
+    } else {
+      localStorage.setItem("access_token", response.data.token);
+      yield put(authActions.loginSuccess(response.data));
+    }
+
     // );
 
-    // Redirect to Admin page
-    yield put(push("/admin/dashboard"));
+    // // Redirect to Admin page
+    // yield put(push("/admin/dashboard"));
   } catch (error) {
     yield put(authActions.loginFailed("Login fail")); // Dispatch action
   }
 }
 function* handleRegister(payload: SignUpPayload) {
   try {
-    yield delay(1000); // yield call(api, '')
-    localStorage.setItem("access_token", "fake_token");
-    yield put(
-      authActions.loginSuccess({
-        username: payload.username,
-        email: payload.email,
-        avatar: "",
-        role: "USER",
-        token: "fake_token",
-      })
+    const response: ResponseType<User> = yield signUp(
+      payload.username,
+      payload.password,
+      payload.email,
+      payload.gender
     );
+    if (response.status !== 200) {
+      toast.error(response.message);
+      yield put(authActions.loginFailed("Login fail"));
+    } else {
+      localStorage.setItem("access_token", response.data.token);
+      yield put(authActions.registerSuccess(response.data));
+    }
 
-    toast.warning("Register success");
     // Redirect to Admin page
     // yield put(push("/admin/dashboard"));
   } catch (error) {
@@ -62,6 +66,7 @@ function* handleLogout() {
 function* watchAuthFlow() {
   while (true) {
     const isLoggedIn: boolean = yield select(selectIsLoggedIn);
+    console.log(isLoggedIn);
 
     // const isLoggedIn = Boolean(localStorage.getItem("access_token"));
 
@@ -72,14 +77,15 @@ function* watchAuthFlow() {
       yield fork(handleLogin, action.payload); // Non-blocking
     }
 
-    yield take(authActions.logout.type);
-    yield call(handleLogout); // Blocking - wait for the logout function to finish before continuing to watch watchLoginFlow
+    if (isLoggedIn) {
+      yield take(authActions.logout.type);
+      yield call(handleLogout);
+    } // Blocking - wait for the logout function to finish before continuing to watch watchLoginFlow
   }
 }
 function* watchRegisterFlow() {
   while (true) {
     const isLoggedIn: boolean = yield select(selectIsLoggedIn);
-    console.log(isLoggedIn);
 
     if (!isLoggedIn) {
       const actionRegister: PayloadAction<SignUpPayload> = yield take(
@@ -88,8 +94,10 @@ function* watchRegisterFlow() {
       yield fork(handleRegister, actionRegister.payload); // Non-blocking
     }
 
-    yield take(authActions.logout.type);
-    yield call(handleLogout); // Blocking - wait for the logout function to finish before continuing to watch watchLoginFlow
+    if (isLoggedIn) {
+      yield take(authActions.logout.type);
+      yield call(handleLogout);
+    } // Blocking - wait for the logout function to finish before continuing to watch watchLoginFlow
   }
 }
 

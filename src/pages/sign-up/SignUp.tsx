@@ -14,8 +14,6 @@ const SignUp = () => {
     email: "",
     username: "",
     password: "",
-    address: "",
-    dateOfBirth: "",
     gender: "MALE",
   };
   let loading = useAppSelector(selectLoading);
@@ -59,20 +57,13 @@ const SignUp = () => {
               if (!values.password) {
                 errors.password = "Bắt buộc";
               }
-              if (!values.address) {
-                errors.address = "Bắt buộc";
-              }
-              if (!values.dateOfBirth) {
-                errors.dateOfBirth = "Bắt buộc";
-              }
+
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(() => {
                 dispatch(
                   authActions.register({
-                    address: values.address,
-                    dateOfBirth: values.dateOfBirth,
                     email: values.email,
                     gender: values.gender,
                     password: values.password,
@@ -136,34 +127,7 @@ const SignUp = () => {
                       {errors.password}
                     </div>
                   )}
-                  <label className="text-[#987070]">Địa chỉ</label>
-                  <input
-                    type="text"
-                    name="address"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.address}
-                    className="input input-bordered w-full mt-1 bg-[#F6F5F2] text-[#FF9FAB]"
-                  />
-                  {errors.address && touched.address && (
-                    <div className="text-red-500 text-sm mt-1">
-                      {errors.address}
-                    </div>
-                  )}
-                  <label className="text-[#987070]">Ngày sinh</label>
-                  <input
-                    type="date"
-                    name="dateOfBirth"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.dateOfBirth}
-                    className="input input-bordered w-full mt-1 bg-[#F6F5F2] text-[#FF9FAB]"
-                  />
-                  {errors.dateOfBirth && touched.dateOfBirth && (
-                    <div className="text-red-500 text-sm mt-1">
-                      {errors.dateOfBirth}
-                    </div>
-                  )}
+
                   <label className="text-[#987070]">Giới tính</label>
                   <select
                     name="gender"

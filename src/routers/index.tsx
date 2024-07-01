@@ -1,7 +1,8 @@
 import { useRoutes } from "react-router-dom";
 import { Layout } from "@/layouts";
-import { ErrorPage, Home, SignIn, SignUp, SalonDetail } from "@/pages";
+import { ErrorPage, Home, SignIn, SignUp, SalonDetail, Profile } from "@/pages";
 import PrivateRouterNotLogin from "./privateRouterNotLogin"; // Corrected import
+import PrivateRouterUser from "./privateRouterUser";
 
 const Routers = () => {
   const elements = useRoutes([
@@ -24,6 +25,10 @@ const Routers = () => {
     {
       path: "/salon/:id",
       element: <Layout Page={SalonDetail} />,
+    },
+    {
+      path: "/profile",
+      element: <PrivateRouterUser Page={() => <Layout Page={Profile} />} />, // Corrected component name
     },
   ]);
   return <div>{elements}</div>;

@@ -12,15 +12,11 @@ interface PrivateRouterUserProps {
 
 const PrivateRouterUser: React.FC<PrivateRouterUserProps> = ({ Page }) => {
   const isLogin = useAppSelector(selectIsLoggedIn);
-  const user = useAppSelector(selectCurrentUser);
-  const role = user?.role;
-  const isUser = role === "USER";
+
   if (!isLogin) {
     return <Navigate to="/sign-in" />;
   }
-  if (!isUser) {
-    return <Navigate to="/dashboard" />;
-  }
+
   return (
     <div>
       <Page /> {/* Render the passed React component */}

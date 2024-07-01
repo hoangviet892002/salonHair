@@ -34,6 +34,7 @@ const authSlice = createSlice({
     },
     loginFailed(state, action: PayloadAction<string>) {
       console.log(action.payload);
+
       state.loading = false;
     },
     register(state, action: PayloadAction<SignUpPayload>) {

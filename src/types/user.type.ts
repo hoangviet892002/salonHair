@@ -7,7 +7,8 @@ export interface User {
 }
 export type SignUpPayload = Omit<User, "avatar" | "role" | "token"> & {
   password: string;
-  address: string;
-  dateOfBirth: string;
+  gender: string;
+};
+export type ProfilePayload = Omit<User, "role" | "token"> & {
   gender: string;
 };

@@ -96,6 +96,11 @@ const SignIn = () => {
                       </div>
                     )}
                   </div>
+                  {loading && (
+                    <div className="text-red-500 text-sm mt-1">
+                      Đang xử lý...
+                    </div>
+                  )}
                   <button
                     type="submit"
                     disabled={isSubmitting}

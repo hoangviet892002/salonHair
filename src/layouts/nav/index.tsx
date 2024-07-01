@@ -62,14 +62,24 @@ const Navbar = () => {
               <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                 <ul className="flex space-x-8">
                   {isLogin ? (
-                    <li>
-                      <button
-                        onClick={() => dispatch(authActions.logout())}
-                        className="hover:text-sky-500 dark:hover:text-sky-400"
-                      >
-                        Logout
-                      </button>
-                    </li>
+                    <>
+                      <li>
+                        <Link
+                          to="/profile"
+                          className="hover:text-sky-500 dark:hover:text-sky-400"
+                        >
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => dispatch(authActions.logout())}
+                          className="hover:text-sky-500 dark:hover:text-sky-400"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </>
                   ) : (
                     <>
                       {Menu.map((item, index) => (
@@ -195,16 +205,39 @@ const Navbar = () => {
                     </svg>
                   </button>
                   <ul className="space-y-6">
-                    {Menu.map((item, index) => (
-                      <li key={index}>
-                        <Link
-                          to={item.url}
-                          className="hover:text-sky-500 dark:hover:text-sky-400"
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
-                    ))}
+                    {isLogin ? (
+                      <>
+                        <li>
+                          <Link
+                            to="/profile"
+                            className="hover:text-sky-500 dark:hover:text-sky-400"
+                          >
+                            Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <button
+                            onClick={() => dispatch(authActions.logout())}
+                            className="hover:text-sky-500 dark:hover:text-sky-400"
+                          >
+                            Logout
+                          </button>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        {Menu.map((item, index) => (
+                          <li key={index}>
+                            <Link
+                              to={item.url}
+                              className="hover:text-sky-500 dark:hover:text-sky-400"
+                            >
+                              {item.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </>
+                    )}
                   </ul>
                   <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10">
                     <div className="flex items-center justify-between">
