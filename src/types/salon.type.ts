@@ -8,3 +8,4 @@ export interface Salon {
   description: string;
   status: string;
 }
+
