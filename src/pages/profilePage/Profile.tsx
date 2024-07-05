@@ -1,11 +1,13 @@
 import { getProfile } from "@/apis/auth.api";
 import { ResponseType } from "@/types/response.type";
 import { ProfilePayload, User } from "@/types/user.type";
-import { Button, Input, Select } from "antd";
+
 import { useEffect, useState } from "react";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { Flex, message, Upload } from "antd";
+import { message, Upload, Skeleton, Button, Input, Select } from "antd";
+
 import type { GetProp, UploadProps } from "antd";
+
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 const beforeUpload = (file: FileType) => {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
@@ -27,6 +29,7 @@ const getBase64 = (file: FileType, callback: (url: string) => void) => {
   reader.readAsDataURL(file);
 };
 const Profile = () => {
+  let [loadingForm, setLoadingForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<ProfilePayload>({
     avatar: "",
@@ -35,8 +38,10 @@ const Profile = () => {
     username: "",
   });
   const fetchProfile = async () => {
+    setLoadingForm(true);
     const response: ResponseType<ProfilePayload> = await getProfile();
     setProfile(response.data);
+    setLoadingForm(false);
   };
   useEffect(() => {
     fetchProfile();
@@ -92,41 +97,49 @@ const Profile = () => {
         <div className="h-full w-1/2 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-4xl text-[#FF9FAB]">Profile</h1>
-            <div className="flex flex-col gap-4 mt-5">
-              <div>
-                <label className="text-[#987070] text-xl label">Username</label>
-                <Input
-                  value={profile.username}
-                  className="w-96 py-2"
-                  placeholder="Username"
-                />
-              </div>
-              <div>
-                <label className="text-[#987070] text-xl label ">Email</label>
-                <Input
-                  value={profile.email}
-                  onChange={(e) => {
-                    e.preventDefault();
-                    setProfile({ ...profile, email: e.target.value });
-                  }}
-                  className="w-96 py-2"
-                  placeholder="Username"
-                />
-              </div>
+            {loadingForm ? (
+              <Skeleton />
+            ) : (
+              <div className="flex flex-col gap-4 mt-5">
+                <div>
+                  <label className="text-[#987070] text-xl label">
+                    Username
+                  </label>
+                  <Input
+                    value={profile.username}
+                    className="w-96 py-2"
+                    placeholder="Username"
+                  />
+                </div>
+                <div>
+                  <label className="text-[#987070] text-xl label ">Email</label>
+                  <Input
+                    value={profile.email}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      setProfile({ ...profile, email: e.target.value });
+                    }}
+                    className="w-96 py-2"
+                    placeholder="Username"
+                  />
+                </div>
 
-              <div>
-                <label className="text-[#987070] text-xl label ">Gender</label>
-                <Select
-                  value={profile.gender}
-                  onChange={handleChange}
-                  className="w-96 py-2 h-[70px]"
-                  options={[
-                    { value: "MALE", label: "Male" },
-                    { value: "FEMALE", label: "Female" },
-                  ]}
-                />
+                <div>
+                  <label className="text-[#987070] text-xl label ">
+                    Gender
+                  </label>
+                  <Select
+                    value={profile.gender}
+                    onChange={handleChange}
+                    className="w-96 py-2 h-[70px]"
+                    options={[
+                      { value: "MALE", label: "Male" },
+                      { value: "FEMALE", label: "Female" },
+                    ]}
+                  />
+                </div>
               </div>
-            </div>{" "}
+            )}{" "}
             <div>
               <Button className="bg-pink-400 text-white p-2 rounded-lg h-[40px] w-[100px]">
                 Cập nhật

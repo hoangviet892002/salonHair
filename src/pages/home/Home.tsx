@@ -120,9 +120,7 @@ const Home = () => {
     queryKey: ["home", { page }],
     queryFn: () => {
       // Simulate API call
-      const startIndex = (page - 1) * 9;
-      const endIndex = startIndex + 9;
-      return salons.slice(startIndex, endIndex);
+      return salons;
     },
   });
 
