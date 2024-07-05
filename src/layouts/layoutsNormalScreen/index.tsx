@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Footer, NavBars } from "..";
+import { Footer, NavBars } from "@/layouts"
 
 // This component serves as a wrapper for any page component passed as a prop.
 interface IndexProps {

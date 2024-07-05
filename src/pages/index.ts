@@ -1,7 +1,8 @@
 import Home from "./home";
+import Shopkeeper from "./shopkeeperPage";
 import SignIn from "./sign-in";
 import SignUp from "./sign-up";
 import ErrorPage from "./404Pages";
 import SalonDetail from "./salonDetail";
 import Profile from "./profilePage";
-export { Home, SignIn, SignUp, ErrorPage, SalonDetail, Profile };
+export { Home, SignIn, SignUp, ErrorPage, SalonDetail, Profile, Shopkeeper };
