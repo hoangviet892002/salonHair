@@ -65,6 +65,14 @@ const Navbar = () => {
                     <>
                       <li>
                         <Link
+                          to="/books"
+                          className="hover:text-sky-500 dark:hover:text-sky-400"
+                        >
+                          Books
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
                           to="/profile"
                           className="hover:text-sky-500 dark:hover:text-sky-400"
                         >
@@ -207,6 +215,14 @@ const Navbar = () => {
                   <ul className="space-y-6">
                     {isLogin ? (
                       <>
+                        <li>
+                          <Link
+                            to="/books"
+                            className="hover:text-sky-500 dark:hover:text-sky-400"
+                          >
+                            Books
+                          </Link>
+                        </li>
                         <li>
                           <Link
                             to="/profile"

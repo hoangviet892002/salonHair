@@ -1,10 +1,18 @@
 import { useRoutes } from "react-router-dom";
 
 import { LayoutShop, Layout } from "@/layouts";
-import { ErrorPage, Home, SignIn, SignUp, SalonDetail, Profile, Shopkeeper} from "@/pages";
+import {
+  ErrorPage,
+  Home,
+  SignIn,
+  SignUp,
+  SalonDetail,
+  Profile,
+  Shopkeeper,
+  Book,
+} from "@/pages";
 import PrivateRouterNotLogin from "./privateRouterNotLogin"; // Corrected import
 import PrivateRouterUser from "./privateRouterUser";
-
 
 const Routers = () => {
   const elements = useRoutes([
@@ -33,8 +41,12 @@ const Routers = () => {
       element: <PrivateRouterUser Page={() => <Layout Page={Profile} />} />, // Corrected component name
     },
     {
+      path: "/books",
+      element: <PrivateRouterUser Page={() => <Layout Page={Book} />} />, // Corrected component name
+    },
+    {
       path: "/shopkeeper",
-      element: <LayoutShop Page={Shopkeeper}/>,
+      element: <LayoutShop Page={Shopkeeper} />,
     },
   ]);
   return <div>{elements}</div>;
