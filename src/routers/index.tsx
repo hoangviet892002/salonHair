@@ -11,6 +11,8 @@ import {
   Shopkeeper,
   Book,
 } from "@/pages";
+import ShopkeeperSalonDetail from "@/pages/shopkeeperSalonDetail";
+import BookingList from "@/pages/Bookings";
 import PrivateRouterNotLogin from "./privateRouterNotLogin"; // Corrected import
 import PrivateRouterUser from "./privateRouterUser";
 
@@ -47,6 +49,14 @@ const Routers = () => {
     {
       path: "/shopkeeper",
       element: <LayoutShop Page={Shopkeeper} />,
+    },
+    {
+      path: "/shopkeeper/salon/:id",
+      element: <LayoutShop Page={ShopkeeperSalonDetail} />,
+    },
+    {
+      path: "/bill",
+      element: <LayoutShop Page={BookingList} />,
     },
   ]);
   return <div>{elements}</div>;
