@@ -1,119 +1,19 @@
+// src/pages/Home.tsx
 import { CardSalon } from "@/components";
 import { Salon } from "@/types/salon.type";
 import { useQueryStrings } from "@/utils/useQuery";
 import { useQuery } from "@tanstack/react-query";
 import { Pagination, PaginationProps } from "antd";
 import { useNavigate } from "react-router-dom";
+import { salons } from "@/data/salons"; // Import data from the shared file
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
   const onChange: PaginationProps["onChange"] = (page) => {
     navigate({ search: `?page=${page}` });
   };
-  let salons: Salon[] = [
-    {
-      id: 1,
-      name: "Spa 1",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "spa1@example.com",
-      description:
-        "Spa 1 là địa điểm thư giãn tuyệt vời với dịch vụ chăm sóc sắc đẹp và làm đẹp chuyên nghiệp.",
-      logo: "https://serapool.fra1.cdn.digitaloceanspaces.com/media/4749/what-is-spa-serapool.jpg",
-      status: "ACTIVE",
-    },
-    {
-      id: 2,
-      name: "Spa 2",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 2",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 3,
-      name: "Spa 3",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 3",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 4,
-      name: "Spa 4",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 4",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 5,
-      name: "Spa 5",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 5",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 6,
-      name: "Spa 6",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 6",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 7,
-      name: "Spa 7",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 7",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 8,
-      name: "Spa 8",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 8",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 9,
-      name: "Spa 9",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 9",
-      logo: "",
-      status: "ACTIVE",
-    },
-    {
-      id: 10,
-      name: "Spa 10",
-      address: "Hà Nội",
-      phone: "0123456789",
-      email: "",
-      description: "Spa 9",
-      logo: "",
-      status: "ACTIVE",
-    },
-    // Add more salons as needed
-  ];
+
   const queryString = useQueryStrings();
   const page = queryString.page ? parseInt(queryString.page) : 1;
   const { data, isLoading } = useQuery({
@@ -140,7 +40,11 @@ const Home = () => {
                   </div>
                 ))
             : data &&
-              data.map((salon) => <CardSalon key={salon.id} salon={salon} />)}
+              data.map((salon) => (
+                <Link to={`/salon/${salon.id}`} key={salon.id}>
+                  <CardSalon salon={salon} />
+                </Link>
+              ))}
         </div>
         <Pagination
           current={page}

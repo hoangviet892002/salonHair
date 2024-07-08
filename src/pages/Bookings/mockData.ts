@@ -33,7 +33,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-08T10:00:00Z"),
     status: "WAITING",
-    comment: "Yêu cầu làm tóc đẹp",
+    comment: "nước ấm, gội lực nhẹ, không nói chuyện",
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-08T14:30:00Z"),
     status: "DONE",
-    comment: "Cắt tóc ngắn",
+    comment: "nước lạnh, không nói chuyện",
   },
   {
     id: 3,
@@ -63,7 +63,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-09T12:00:00Z"),
     status: "WAITING",
-    comment: "Uốn nhuộm tóc",
+    comment: "nước ấm",
   },
   {
     id: 4,
@@ -78,7 +78,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-09T15:30:00Z"),
     status: "CANCEL",
-    comment: "Thay đổi lịch đặt",
+    comment: "nước ấm, gội lực nhẹ, tẩy tế bào chết da đầu",
   },
   {
     id: 5,
@@ -93,7 +93,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-10T11:00:00Z"),
     status: "DONE",
-    comment: "Điều trị da mặt",
+    comment: "gội lực nhẹ",
   },
   {
     id: 6,
@@ -108,7 +108,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-11T13:30:00Z"),
     status: "WAITING",
-    comment: "Làm móng tay",
+    comment: "nước ấm, rửa mặt, xịt tinh dầu",
   },
   {
     id: 7,
@@ -123,7 +123,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-12T10:00:00Z"),
     status: "WAITING",
-    comment: "Dưỡng da mặt",
+    comment: "gội lực nhẹ",
   },
   {
     id: 8,
@@ -138,7 +138,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-13T16:00:00Z"),
     status: "DONE",
-    comment: "Cat tia toc nam",
+    comment: "nước ấm",
   },
   {
     id: 9,
@@ -153,7 +153,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-14T14:30:00Z"),
     status: "CANCEL",
-    comment: "Thay đổi lịch hẹn",
+    comment: "nước ấm",
   },
   {
     id: 10,
@@ -168,7 +168,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-15T11:00:00Z"),
     status: "DONE",
-    comment: "Mát xa toàn thân",
+    comment: "gội lực nhẹ",
   },
   {
     id: 11,
@@ -183,7 +183,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-16T10:30:00Z"),
     status: "WAITING",
-    comment: "Gội đầu",
+    comment: "nước ấm",
   },
   {
     id: 12,
@@ -198,7 +198,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-17T15:00:00Z"),
     status: "DONE",
-    comment: "Nhuộm tóc mới",
+    comment: "gội lực nhẹ",
   },
   {
     id: 13,
@@ -213,7 +213,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-18T13:00:00Z"),
     status: "WAITING",
-    comment: "Cắt tóc nữ",
+    comment: "nước ấm",
   },
   {
     id: 14,
@@ -228,7 +228,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-19T11:30:00Z"),
     status: "CANCEL",
-    comment: "Hủy đặt lịch",
+    comment: "nước ấm",
   },
   {
     id: 15,
@@ -243,7 +243,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-20T12:30:00Z"),
     status: "DONE",
-    comment: "Làm đẹp da mặt",
+    comment: "gội lực nhẹ",
   },
   {
     id: 16,
@@ -258,7 +258,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-21T14:00:00Z"),
     status: "WAITING",
-    comment: "Dưỡng tóc",
+    comment: "nước ấm",
   },
   {
     id: 17,
@@ -273,7 +273,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-22T16:30:00Z"),
     status: "WAITING",
-    comment: "Xoa bóp",
+    comment: "gội lực nhẹ",
   },
   {
     id: 18,
@@ -288,7 +288,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-23T10:30:00Z"),
     status: "DONE",
-    comment: "Cắt tóc nam",
+    comment: "nước ấm",
   },
   {
     id: 19,
@@ -303,7 +303,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-24T11:00:00Z"),
     status: "CANCEL",
-    comment: "Thay đổi lịch hẹn",
+    comment: "nước ấm",
   },
   {
     id: 20,
@@ -318,82 +318,7 @@ export const mockReservations: Reservation[] = [
     },
     time_from: new Date("2024-07-25T14:30:00Z"),
     status: "DONE",
-    comment: "Nhuộm tóc",
-  },
-  {
-    id: 21,
-    user: {
-      id: 20,
-      full_name: "Lê Thị U",
-      avatar: "avatar_url",
-    },
-    salon: {
-      id: 1,
-      name: "Chien",
-    },
-    time_from: new Date("2024-07-26T15:00:00Z"),
-    status: "WAITING",
-    comment: "Uốn tóc",
-  },
-  {
-    id: 22,
-    user: {
-      id: 21,
-      full_name: "Nguyễn Văn V",
-      avatar: "avatar_url",
-    },
-    salon: {
-      id: 2,
-      name: "Spa Beauty",
-    },
-    time_from: new Date("2024-07-27T12:00:00Z"),
-    status: "WAITING",
-    comment: "Nhuộm tóc nâu",
-  },
-  {
-    id: 23,
-    user: {
-      id: 22,
-      full_name: "Trần Thị X",
-      avatar: "avatar_url",
-    },
-    salon: {
-      id: 3,
-      name: "Hair Magic",
-    },
-    time_from: new Date("2024-07-28T11:30:00Z"),
-    status: "DONE",
-    comment: "Cắt tóc lưỡi hái",
-  },
-  {
-    id: 24,
-    user: {
-      id: 23,
-      full_name: "Lê Văn Y",
-      avatar: "avatar_url",
-    },
-    salon: {
-      id: 4,
-      name: "Luxury Salon",
-    },
-    time_from: new Date("2024-07-29T13:30:00Z"),
-    status: "CANCEL",
-    comment: "Hủy đặt lịch",
-  },
-  {
-    id: 25,
-    user: {
-      id: 24,
-      full_name: "Phạm Thị Z",
-      avatar: "avatar_url",
-    },
-    salon: {
-      id: 5,
-      name: "Elegance Spa",
-    },
-    time_from: new Date("2024-07-30T16:00:00Z"),
-    status: "DONE",
-    comment: "Massage thư giãn",
+    comment: "gội lực nhẹ",
   },
 ];
 
