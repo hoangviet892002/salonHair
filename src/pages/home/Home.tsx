@@ -19,7 +19,7 @@ const Home = () => {
       email: "spa1@example.com",
       description:
         "Spa 1 là địa điểm thư giãn tuyệt vời với dịch vụ chăm sóc sắc đẹp và làm đẹp chuyên nghiệp.",
-      logo: "url_to_logo_image",
+      logo: "https://serapool.fra1.cdn.digitaloceanspaces.com/media/4749/what-is-spa-serapool.jpg",
       status: "ACTIVE",
     },
     {

@@ -6,6 +6,7 @@ import {
   CloseOutlined,
 } from "@ant-design/icons";
 import { Input, Select } from "antd";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { Salon } from "@/types/salon.type";
 
 const { Option } = Select;
@@ -20,7 +21,7 @@ const Shopkeeper = () => {
       description: "wfe",
       address: "Quy Nhon",
       phone: "097817739",
-      logo: "jgioru",
+      logo: "https://serapool.fra1.cdn.digitaloceanspaces.com/media/4749/what-is-spa-serapool.jpg",
     },
     {
       id: 2,
@@ -140,7 +141,9 @@ const Shopkeeper = () => {
                       onChange={handleInputChange}
                     />
                   ) : (
-                    salon.name
+                    <Link to={`/shopkeeper/salon/${salon.id}`}>
+                      {salon.name}
+                    </Link>
                   )}
                 </td>
                 <td>
@@ -195,6 +198,9 @@ const Shopkeeper = () => {
                         <button onClick={() => startEditing(salon)}>
                           <EditOutlined />
                         </button>
+                        <Link to={`/shopkeeper/salon/${salon.id}`}>
+                          Chi tiết
+                        </Link>
                         <button>
                           <DeleteOutlined />
                         </button>

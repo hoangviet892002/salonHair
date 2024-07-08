@@ -1,12 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  type menu = {
-    title: string;
-    Url: string;
-  };
+  const location = useLocation();
 
-  const Menu: menu[] = [
+  const Menu = [
     {
       title: "Dashboard",
       Url: "/dashboard",
@@ -28,16 +25,19 @@ const Sidebar = () => {
       Url: "/bill",
     },
   ];
+
   return (
-    <div className="w-1/5 bg-[#987070]  h-auto rounded-lg  ">
-      <div className="">
+    <div className="w-1/5 bg-[#987070] h-auto rounded-lg">
+      <div>
         <ul className="py-4 text-center">
           {Menu.map((menu, index) => (
-            <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
-              <NavLink
-                to={menu.Url}
-                className={({ isActive }) => (isActive ? "bg-[#604646]" : "")}
-              >
+            <li
+              key={index}
+              className={`px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646] ${
+                location.pathname === menu.Url ? "bg-[#604646]" : ""
+              }`}
+            >
+              <NavLink to={menu.Url} className="block">
                 {menu.title}
               </NavLink>
             </li>
@@ -46,21 +46,21 @@ const Sidebar = () => {
       </div>
       <div className="h-[2px] w-full bg-[#604646]"></div>
 
-      <div className="p-6 text-white ">Page</div>
+      <div className="p-6 text-white">Page</div>
       <ul className="py-4 text-center">
-        <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
-            Calender
+            Calendar
           </a>
         </li>
 
-        <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
             To do
           </a>
         </li>
 
-        <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
             Contact
           </a>
@@ -68,15 +68,15 @@ const Sidebar = () => {
       </ul>
 
       <div className="h-[2px] w-full bg-[#604646]"></div>
-      <div className="">
+      <div>
         <ul className="py-4 text-center">
-          <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+          <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
             <a href="#" className="block">
-              Setting
+              Settings
             </a>
           </li>
 
-          <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+          <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
             <a href="#" className="block">
               Log out
             </a>
@@ -87,4 +87,5 @@ const Sidebar = () => {
     </div>
   );
 };
+
 export default Sidebar;
