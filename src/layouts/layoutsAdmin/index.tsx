@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
-import { Footer, SidebarAdmin } from "@/layouts"
+import { Footer, } from "@/layouts"
+import SidebarAdmin from "../sidebarAdmin";
 
 
 interface IndexProps {

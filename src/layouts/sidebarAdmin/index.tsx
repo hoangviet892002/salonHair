@@ -1,12 +1,10 @@
-
 import { NavLink } from "react-router-dom";
 
 const SidebarAdmin = () => {
     type menu = {
         title: string,
         Url: string,
-
-    }
+    };
 
     const Menu: menu[] = [
         {
@@ -15,18 +13,18 @@ const SidebarAdmin = () => {
 
         },
         {
-            title: "Danh sách user",
-            Url: "/user-list"
+            title: "Danh sách User",
+            Url: "/"
         },
         {
-            title: "Danh sách Salon",
-            Url: "/salon-list"
+            title: "Danh sách salon",
+            Url: "/"
         },
         {
-            title: "Yêu cầu mở tiệm",
+            title: "Yêu cầu thêm tiệm",
             Url: "/permission"
         },
-       
+        
 
     ]
     return (
@@ -40,40 +38,38 @@ const SidebarAdmin = () => {
                     ))}
                 </ul>
             </div>
-            <div className="h-[2px] w-full bg-[#604646]">
 
-            </div>
+            <div className="h-[2px] w-full bg-[#604646]"></div>
 
-            <div className="p-6 text-white ">Page</div>
+            <div className="p-6 text-white">Page</div>
             <ul className="py-4 text-center">
-                <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+                <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
                     <a href="#" className="block">Calender</a>
                 </li>
-
-                <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+                <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
                     <a href="#" className="block">To do</a>
                 </li>
-
-                <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+                <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
                     <a href="#" className="block">Contact</a>
                 </li>
             </ul>
 
             <div className="h-[2px] w-full bg-[#604646]"></div>
-            <div className="">
+
+            <div>
                 <ul className="py-4 text-center">
-                    <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+                    <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
                         <a href="#" className="block">Setting</a>
                     </li>
-
-                    <li className="px-4 py-2  text-white  hover:text-[#FFE5EC] hover:bg-[#604646]">
+                    <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
                         <a href="#" className="block">Log out</a>
                     </li>
                 </ul>
             </div>
-            <br />
 
+            <br />
         </div>
     );
 };
+
 export default SidebarAdmin;

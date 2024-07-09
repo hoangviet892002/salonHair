@@ -15,7 +15,7 @@ const Permission = () => {
   const [salons, setSalons] = useState<Salon[]>([
     {
       id: 1,
-      name: "Chien",
+      name: "Cỏ Xanh",
       email: "chienlag1702@gmail.com",
       status: "active",
       description: "wfe",
@@ -126,46 +126,16 @@ const Permission = () => {
             {salons.map((salon) => (
               <tr key={salon.id} className="bg-base-200">
                 <td>
-                  <img
-                    src={salon.logo}
-                    alt={salon.name}
-                    className="w-10 h-10"
-                  />
+                  {salon.name}
                 </td>
                 <td>
-                  {editingId === salon.id ? (
-                    <Input
-                      name="name"
-                      value={editingSalon?.name}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    <Link to={`/shopkeeper/salon/${salon.id}`}>
-                      {salon.name}
-                    </Link>
-                  )}
+                  {salon.address}
                 </td>
                 <td>
-                  {editingId === salon.id ? (
-                    <Input
-                      name="address"
-                      value={editingSalon?.address}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    salon.address
-                  )}
+                  {salon.email}
                 </td>
                 <td>
-                  {editingId === salon.id ? (
-                    <Input
-                      name="email"
-                      value={editingSalon?.email}
-                      onChange={handleInputChange}
-                    />
-                  ) : (
-                    salon.email
-                  )}
+                  {salon.description}
                 </td>
                 
                 <td>
