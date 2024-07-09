@@ -1,6 +1,7 @@
+import LayoutAdmin from "./layoutsAdmin";
 import NavBars from "./nav";
 import Footer from "./footer";
 import Layout from "./layoutsNormalScreen";
 import Sidebar from "./sidebar";
 import LayoutShop from "./layoutsShopScreen";
-export { NavBars, Footer, Layout, Sidebar, LayoutShop };
+export { NavBars, Footer, Layout, Sidebar, LayoutShop,LayoutAdmin  };

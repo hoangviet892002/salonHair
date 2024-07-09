@@ -15,6 +15,9 @@ import ShopkeeperSalonDetail from "@/pages/shopkeeperSalonDetail";
 import BookingList from "@/pages/Bookings";
 import PrivateRouterNotLogin from "./privateRouterNotLogin"; // Corrected import
 import PrivateRouterUser from "./privateRouterUser";
+import LayoutAdmin from "@/layouts/layoutsAdmin";
+import Permission from "@/pages/permission";
+import Admin from "@/pages/adminPage";
 
 const Routers = () => {
   const elements = useRoutes([
@@ -58,6 +61,14 @@ const Routers = () => {
       path: "/bill",
       element: <LayoutShop Page={BookingList} />,
     },
+    {
+      path: "/permission",
+      element: <LayoutAdmin Page={Permission} />,
+    },
+    {
+      path: "/admin",
+      element: <LayoutAdmin Page={Admin} />,
+    }
   ]);
   return <div>{elements}</div>;
 };

@@ -53,10 +53,18 @@ const Navbar = () => {
                     <>
                       <li>
                         <Link
-                          to="/books"
+                          to="/admin"
                           className="hover:text-sky-500 dark:hover:text-sky-400"
                         >
-                          Books
+                          Admin
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/shopkeeper"
+                          className="hover:text-sky-500 dark:hover:text-sky-400"
+                        >
+                          Shopkeeper
                         </Link>
                       </li>
                       <li>
