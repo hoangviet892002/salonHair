@@ -18,6 +18,7 @@ import PrivateRouterUser from "./privateRouterUser";
 import LayoutAdmin from "@/layouts/layoutsAdmin";
 import Permission from "@/pages/permission";
 import Admin from "@/pages/adminPage";
+import BookingHistoryPage from "@/pages/historyBooking/historyBooking";
 
 const Routers = () => {
   const elements = useRoutes([
@@ -60,6 +61,11 @@ const Routers = () => {
     {
       path: "/bill",
       element: <LayoutShop Page={BookingList} />,
+    },
+   
+    {
+      path: "/history",
+      element: <PrivateRouterUser Page={() => <Layout Page={BookingHistoryPage} />} />, 
     },
     {
       path: "/permission",

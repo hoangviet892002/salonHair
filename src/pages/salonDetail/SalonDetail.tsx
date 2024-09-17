@@ -41,12 +41,12 @@ const SalonDetail = () => {
 
     return (
       <div className="w-full">
-        <p className="text-xl text-[#987070]">Chọn Giường:</p>
+        <p className="text-xl text-[#86664B]">Chọn Giường:</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {salonBeds.map((bed) => (
             <div key={bed.id} className="flex flex-col items-center my-2">
               <Button
-                className={`bg-[#987070] text-white p-5 rounded-lg w-full ${
+                className={`bg-[#86664B] text-white p-5 rounded-lg w-full ${
                   bed.status !== "ACTIVE" ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={bed.status !== "ACTIVE"}
@@ -63,26 +63,26 @@ const SalonDetail = () => {
 
   // Trả về JSX cho component SalonDetail
   return (
-    <div className="flex flex-col sm:flex-row gap-4 bg-white mx-4 sm:mx-20 h-screen">
+    <div className="flex flex-col sm:flex-row gap-4 bg-[#F5F5F5] mx-4 sm:mx-20 h-screen">
       <div className="flex flex-col items-center rounded-lg bg-[#FF9FAB] w-full sm:w-[600px] h-full shadow-lg p-4 sm:p-8">
         <img
           className="my-3 w-full h-1/2 sm:h-[400px] rounded-lg object-cover"
           src={salon.logo}
           alt={salon.name}
         />
-        <Input value={salon.address} className="w-full my-3" />
+        <Input value={salon.address} className="w-full my-3" style={{ color: '#86664B' }} />
         <DatePicker onChange={() => {}} className="w-full my-3" />
         <TimePicker onChange={() => {}} className="w-full my-3" />
       </div>
       <div className="flex flex-col items-start w-full sm:w-1/2">
         {isBooked ? (
           <>
-            <h1 className="text-3xl font-bold text-[#987070] mt-4 sm:mt-0">
+            <h1 className="text-3xl font-bold text-[#86664B] mt-4 sm:mt-0">
               Đặt lịch
             </h1>
             {renderBeds(salon.id)}
             <button
-              className="bg-[#987070] text-white p-2 rounded-lg mt-4"
+              className="bg-[#86664B] text-white p-2 rounded-lg mt-4"
               onClick={() => setIsBooked(false)}
             >
               Quay lại chi tiết
@@ -90,16 +90,16 @@ const SalonDetail = () => {
           </>
         ) : (
           <>
-            <h1 className="text-3xl font-bold text-[#987070] mt-4 sm:mt-0">
+            <h1 className="text-3xl font-bold text-[#86664B] mt-4 sm:mt-0">
               {salon.name}
             </h1>
-            <p className="text-xl text-[#987070]">Địa chỉ: {salon.address}</p>
-            <p className="text-xl text-[#987070]">
+            <p className="text-xl text-[#86664B]">Địa chỉ: {salon.address}</p>
+            <p className="text-xl text-[#86664B]">
               Thông tin: {salon.description}
             </p>
             <div className="w-full text-right">
               <button
-                className={`bg-[#987070] text-white p-2 rounded-lg`}
+                className={`bg-[#86664B] text-white p-2 rounded-lg`}
                 onClick={() => setIsBooked(true)}
               >
                 Đặt lịch
@@ -117,7 +117,7 @@ const SalonDetail = () => {
           <Button key="back" onClick={handleCancel}>
             Hủy
           </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
+          <Button key="submit" type="primary" onClick={handleOk} style={{ backgroundColor: '#86664B', borderColor: '#86664B' }}>
             Đồng ý
           </Button>,
         ]}
