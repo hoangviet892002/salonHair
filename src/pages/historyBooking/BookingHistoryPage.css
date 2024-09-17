@@ -1,0 +1,5 @@
+.custom-table .ant-table-thead > tr > th {
+    background-color: #86664B; /* Màu nền tùy chỉnh cho hàng tiêu đề */
+    color: #E3D9C7; /* Màu chữ của tiêu đề */
+  }
+  

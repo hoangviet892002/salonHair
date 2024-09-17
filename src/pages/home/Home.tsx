@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center bg-white min-h-screen">
+      <div className=" bg-[#F5F5F5] flex flex-col items-center justify-center bg-white min-h-screen">
         <div className="grid lg:grid-cols-3 md:grid-cols-3 gap-4 p-10">
           {isLoading
             ? Array(9)
