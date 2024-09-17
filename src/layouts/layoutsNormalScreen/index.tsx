@@ -8,9 +8,9 @@ interface IndexProps {
 
 const Layout: React.FC<IndexProps> = ({ Page }) => {
   return (
-    <div className="dark:bg-slate-900">
+    <div className="bg-slate-900">
       <NavBars />
-      <div className="w-full h-full bg-site bg-no-repeat bg-cover overflow-hidden">
+      <div className="w-full bg-[#E3D9C7] h-full bg-site bg-no-repeat bg-cover overflow-hidden">
         <Page />
       </div>
       <Footer />
