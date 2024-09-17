@@ -36,21 +36,29 @@ const BookingHistoryPage: React.FC = () => {
     },
   ]);
 
+  const [bookingToCancel, setBookingToCancel] = useState<number | null>(null);
+
   const cancelBooking = (id: number) => {
     setBookingHistory((prevHistory) =>
       prevHistory.map((booking) =>
         booking.id === id ? { ...booking, status: "cancelled" } : booking
       )
     );
+    setBookingToCancel(null); // Clear the state
   };
 
   const handleCancel = (id: number) => {
+    setBookingToCancel(id); // Set the booking id to be canceled
+
     const onConfirm = () => {
-      cancelBooking(id);
+      if (bookingToCancel !== null) {
+        cancelBooking(bookingToCancel);
+      }
     };
     
     const onCancel = () => {
       console.log("Cancelled");
+      setBookingToCancel(null); // Clear the state
     };
 
     return (
