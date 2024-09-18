@@ -1,15 +1,12 @@
+import React, { useEffect, useState } from "react";
+import { Button, Upload, Skeleton, message } from "antd";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import ProfileInfo from "./ProfileInfo"; // Import ProfileInfo component
 import { getProfile } from "@/apis/auth.api";
 import { ResponseType } from "@/types/response.type";
-import { ProfilePayload, User } from "@/types/user.type";
+import { ProfilePayload } from "@/types/user.type";
 
-import { useEffect, useState } from "react";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { message, Upload, Skeleton, Button, Input, Select } from "antd";
-
-import type { GetProp, UploadProps } from "antd";
-
-type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
-const beforeUpload = (file: FileType) => {
+const beforeUpload = (file: File) => {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {
     message.error("You can only upload JPG/PNG file!");
@@ -23,33 +20,41 @@ const beforeUpload = (file: FileType) => {
   return true;
 };
 
-const getBase64 = (file: FileType, callback: (url: string) => void) => {
+const getBase64 = (file: File, callback: (url: string) => void) => {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result as string));
   reader.readAsDataURL(file);
 };
+
 const Profile = () => {
-  let [loadingForm, setLoadingForm] = useState(false);
+  const [loadingForm, setLoadingForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<ProfilePayload>({
     avatar: "",
     email: "",
     gender: "",
     username: "",
+    fullName: "",
+    phone: "",
   });
+  const [isEditing, setIsEditing] = useState(false);
+
   const fetchProfile = async () => {
     setLoadingForm(true);
     const response: ResponseType<ProfilePayload> = await getProfile();
     setProfile(response.data);
     setLoadingForm(false);
   };
+
   useEffect(() => {
     fetchProfile();
   }, []);
+
   const handleChange = (value: string) => {
     setProfile({ ...profile, gender: value });
   };
-  const handleChangeImage: UploadProps["onChange"] = (info) => {
+
+  const handleChangeImage = (info: any) => {
     if (info.file.status === "uploading") {
       setLoading(true);
       return;
@@ -58,26 +63,25 @@ const Profile = () => {
       setLoading(false);
     }
     if (info.file.originFileObj) {
-      getBase64(info.file.originFileObj as FileType, (url) => {
+      getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
         setProfile({ ...profile, avatar: url });
       });
     }
   };
-  const uploadButton = (
-    <button style={{ border: 0, background: "none" }} type="button">
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div>Upload</div>
-    </button>
-  );
+
+  const toggleEdit = () => {
+    setIsEditing(!isEditing);
+  };
+
   return (
-    <div className="flex w-screen h-screen  items-center justify-center border-collapse">
-      <div className="flex bg-pink-200  h-[600px] w-[1300px]">
-        <div className="h-full bg-pink-400 w-1/2 flex items-center justify-center">
+    <div className="flex w-screen h-screen items-center justify-center border-collapse">
+      <div className="flex bg-[#86664B] h-[600px] w-[1300px]">
+        <div className="h-full w-1/2 flex items-center justify-center">
           <div>
             <Upload
               name="avatar"
-              className="h-[500px] w-[500px]  flex items-center justify-center rounded-lg"
+              className="h-[500px] w-[500px] flex items-center justify-center rounded-lg bg-[#E3D9C7]"
               showUploadList={false}
               beforeUpload={beforeUpload}
               onChange={handleChangeImage}
@@ -89,62 +93,55 @@ const Profile = () => {
                   alt="avatar"
                 />
               ) : (
-                uploadButton
+                <button style={{ border: 0, background: "none" }} type="button">
+                  {loading ? <LoadingOutlined /> : <PlusOutlined />}
+                  <div>Upload</div>
+                </button>
               )}
             </Upload>
           </div>
         </div>
         <div className="h-full w-1/2 flex flex-col items-center justify-center">
           <div className="flex flex-col items-center justify-center">
-            <h1 className="text-4xl text-[#FF9FAB]">Profile</h1>
+            <h1 className="text-4xl text-[#86664B]">Profile</h1>
             {loadingForm ? (
               <Skeleton />
             ) : (
               <div className="flex flex-col gap-4 mt-5">
-                <div>
-                  <label className="text-[#987070] text-xl label">
-                    Username
-                  </label>
-                  <Input
-                    value={profile.username}
-                    className="w-96 py-2"
-                    placeholder="Username"
-                  />
-                </div>
-                <div>
-                  <label className="text-[#987070] text-xl label ">Email</label>
-                  <Input
-                    value={profile.email}
-                    onChange={(e) => {
-                      e.preventDefault();
-                      setProfile({ ...profile, email: e.target.value });
-                    }}
-                    className="w-96 py-2"
-                    placeholder="Username"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-[#987070] text-xl label ">
-                    Gender
-                  </label>
-                  <Select
-                    value={profile.gender}
-                    onChange={handleChange}
-                    className="w-96 py-2 h-[70px]"
-                    options={[
-                      { value: "MALE", label: "Male" },
-                      { value: "FEMALE", label: "Female" },
-                    ]}
-                  />
+                <ProfileInfo
+                  fullName={profile.fullName}
+                  username={profile.username}
+                  email={profile.email}
+                  phone={profile.phone}
+                  gender={profile.gender}
+                  onChangeFullName={(e) =>
+                    setProfile({ ...profile, fullName: e.target.value })
+                  }
+                  onChangeUsername={(e) =>
+                    setProfile({ ...profile, username: e.target.value })
+                  }
+                  onChangeEmail={(e) =>
+                    setProfile({ ...profile, email: e.target.value })
+                  }
+                  onChangePhone={(e) =>
+                    setProfile({ ...profile, phone: e.target.value })
+                  }
+                  onChangeGender={handleChange}
+                  isEditing={isEditing}  // Pass isEditing state
+                />
+                <div className="flex gap-4">
+                  <Button
+                    onClick={toggleEdit}
+                    className="bg-[#86664B] text-white p-2 rounded-lg"
+                  >
+                    {isEditing ? "Save" : "Edit"}
+                  </Button>
+                  <Button className="bg-[#86664B] text-white p-2 rounded-lg">
+                    Change Password
+                  </Button>
                 </div>
               </div>
-            )}{" "}
-            <div>
-              <Button className="bg-pink-400 text-white p-2 rounded-lg h-[40px] w-[100px]">
-                Cập nhật
-              </Button>
-            </div>
+            )}
           </div>
         </div>
       </div>

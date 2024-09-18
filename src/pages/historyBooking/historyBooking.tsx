@@ -119,7 +119,7 @@ const BookingHistoryPage: React.FC = () => {
   ];
 
   return (
-    <div className="flex-1 p-4 bg-[#F6F5F2] min-h-screen">
+    <div className="flex-1 p-4 bg-[#E3D9C7] min-h-screen">
       <h1 className="text-2xl font-bold mb-6 text-[#89634A]">Lịch sử booking</h1>
       <Table
         dataSource={bookingHistory}
