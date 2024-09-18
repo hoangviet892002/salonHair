@@ -27,13 +27,13 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-1/5 bg-[#987070] h-auto rounded-lg">
+    <div className="w-1/5 bg-[#86664B] h-auto rounded-lg">
       <div>
         <ul className="py-4 text-center">
           {Menu.map((menu, index) => (
             <li
               key={index}
-              className={`px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646] ${
+              className={`px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646] ${
                 location.pathname === menu.Url ? "bg-[#604646]" : ""
               }`}
             >
@@ -46,21 +46,21 @@ const Sidebar = () => {
       </div>
       <div className="h-[2px] w-full bg-[#604646]"></div>
 
-      <div className="p-6 text-white">Page</div>
+      <div className="p-6 text-[#E3D9C7]">Page</div>
       <ul className="py-4 text-center">
-        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
             Calendar
           </a>
         </li>
 
-        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
             To do
           </a>
         </li>
 
-        <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
+        <li className="px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646]">
           <a href="#" className="block">
             Contact
           </a>
@@ -70,13 +70,13 @@ const Sidebar = () => {
       <div className="h-[2px] w-full bg-[#604646]"></div>
       <div>
         <ul className="py-4 text-center">
-          <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
+          <li className="px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646]">
             <a href="#" className="block">
               Settings
             </a>
           </li>
 
-          <li className="px-4 py-2 text-white hover:text-[#FFE5EC] hover:bg-[#604646]">
+          <li className="px-4 py-2 text-[#E3D9C7] hover:text-[#FFE5EC] hover:bg-[#604646]">
             <a href="#" className="block">
               Log out
             </a>

@@ -7,7 +7,7 @@ interface IndexProps {
   }
   const LayoutShop: React.FC<IndexProps> = ({ Page }) => {
     return (
-      <div className="bg-[#86664B] flex flex-row ">
+      <div className="bg-[#E3D9C7] flex flex-row ">
         <Sidebar/>
         
         <div className="w-full h-full bg-site bg-no-repeat bg-cover overflow-hidden">
