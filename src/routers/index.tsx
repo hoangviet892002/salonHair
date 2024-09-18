@@ -19,6 +19,7 @@ import LayoutAdmin from "@/layouts/layoutsAdmin";
 import Permission from "@/pages/permission";
 import Admin from "@/pages/adminPage";
 import BookingHistoryPage from "@/pages/historyBooking/historyBooking";
+import ChangePassword from "@/pages/ChangePassword/ChangePassword";
 
 const Routers = () => {
   const elements = useRoutes([
@@ -46,6 +47,11 @@ const Routers = () => {
       path: "/profile",
       element: <PrivateRouterUser Page={() => <Layout Page={Profile} />} />, // Corrected component name
     },
+    // {
+    //   path: "/change-password",
+    //   element: <PrivateRouterUser Page={() => <Layout Page={ChangePassword} />} />, // Corrected component name
+    // },
+    
     {
       path: "/books",
       element: <PrivateRouterUser Page={() => <Layout Page={Book} />} />, // Corrected component name

@@ -3,7 +3,9 @@ export interface User {
   email: string;
   role: string;
   token: string;
+  fullName: string;
   username: string;
+  phone: number;
 }
 export type SignUpPayload = Omit<User, "avatar" | "role" | "token"> & {
   password: string;
